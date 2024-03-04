@@ -1,16 +1,10 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  FaSearch,
-  FaShoppingBag,
-  FaSignInAlt,
-  FaSignOutAlt,
-  FaUser,
-} from "react-icons/fa";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 
-// const user = { _id: "", role: "" };
+const user = { _id: "", role: "" };
 // const user = { _id: "1", role: "User" };
-const user = { _id: "1", role: "Admin" };
+// const user = { _id: "1", role: "Admin" };
 
 function Header() {
   console.log("Header render");

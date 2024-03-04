@@ -1,3 +1,9 @@
 1. Add Following : 
     - Routing implemented with react-router-dom 
     - Context only created.
+
+2. Add Following : 
+    - Add Footer Design
+    - Change in AuthContext 
+    - Design Footer 
+    - Design and Integrate with backend ✅

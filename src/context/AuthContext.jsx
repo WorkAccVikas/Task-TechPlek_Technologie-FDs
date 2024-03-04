@@ -23,30 +23,42 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (authTokens) {
+      // console.log("authToken changed...");
+      // console.log(jwtDecode(authTokens));
       setUser(jwtDecode(authTokens));
     }
     setLoading(false);
   }, [authTokens, loading]);
 
-  const loginUser = async (e) => {
-    e.preventDefault();
-    const response = await axios.post(
-      "http://localhost:8000/api/v1/user/login",
-      {
-        username: e.target.username.value,
-        password: e.target.password.value,
-      },
-      {
-        withCredentials: true,
-      },
-    );
+  const loginUser = async (data) => {
+    try {
+      console.log("loginUser context function = ", data);
+      const response = await axios.post(
+        "http://localhost:8000/api/v1/user/login",
+        {
+          username: data.username,
+          password: data.password,
+        },
+        {
+          withCredentials: true,
+        },
+      );
 
-    if (response.data.status === 200) {
-      setAuthTokens(response.data.data);
-      setUser(jwtDecode(response.data.refreshToken));
-      localStorage.setItem("authTokens", response.data.refreshToken);
-    } else {
-      alert("Something went wrong");
+      console.log("response = ", response);
+
+      if (response.data.statusCode === 200) {
+        console.log("Success");
+        console.log(response.data.data.refreshToken);
+        setAuthTokens(response.data.data.refreshToken);
+        setUser(jwtDecode(response.data.data.refreshToken));
+        localStorage.setItem("authTokens", response.data.data.refreshToken);
+      } else {
+        console.log("Failed");
+        alert("Something went wrong");
+      }
+    } catch (error) {
+      console.log("Error = ", error);
+      throw error;
     }
   };
 
