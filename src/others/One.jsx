@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import axios from "./utils/axiosInstance";
+import axios from "../utils/axiosInstance";
 
 let axiosConfig = {
   withCredentials: true,
 };
 
-function App() {
+function Test() {
   const [username, setUsername] = useState("ram");
   const [password, setPassword] = useState("12345");
 
@@ -68,4 +68,4 @@ function App() {
   );
 }
 
-export default App;
+export default Test;

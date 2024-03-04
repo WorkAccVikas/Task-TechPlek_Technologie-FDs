@@ -6,6 +6,10 @@ import { Suspense, lazy } from "react";
 
 import { AuthProvider } from "./context/AuthContext";
 
+// const One = lazy(() => import("./others/One"));
+
+import Two from "./others/Two";
+
 // import Routes
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -42,6 +46,10 @@ function App() {
               {/* Admin Route */}
               <Route path="/dashboard" element={<Dashboard />} />
 
+              {/* testing */}
+              <Route path="/test" element={<Two />} />
+
+              {/* Not Found */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

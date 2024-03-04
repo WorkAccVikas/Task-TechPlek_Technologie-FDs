@@ -2,6 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useState, createContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
 
 const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ export default AuthContext;
 export const AuthProvider = ({ children }) => {
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
-      ? JSON.parse(localStorage.getItem("authTokens"))
+      ? localStorage.getItem("authTokens")
       : null,
   );
   const [user, setUser] = useState(() =>
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }) => {
       ? jwtDecode(localStorage.getItem("authTokens"))
       : null,
   );
+
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -62,11 +64,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logoutUser = () => {
-    setAuthTokens(null);
-    setUser(null);
-    localStorage.removeItem("authTokens");
-    navigate("/login");
+  const logoutUser = async () => {
+    try {
+      console.log("logoutUser context function");
+
+      const response = await axiosInstance.post("/api/v1/user/logout", {
+        withCredentials: true,
+      });
+      console.log(`🚀 ~ logoutUser ~ response:`, response);
+
+      setAuthTokens(null);
+      setUser(null);
+      localStorage.removeItem("authTokens");
+      // navigate("/login");
+    } catch (error) {
+      console.log("Error at logoutUser context function = ", error);
+      throw error;
+    }
   };
 
   const contextData = {

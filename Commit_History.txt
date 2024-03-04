@@ -7,3 +7,7 @@
     - Change in AuthContext 
     - Design Footer 
     - Login : Design and Integrate with backend ✅
+
+4. Add Following : 
+    - Logout Functionality implemented with backend API ✅
+    - Change in AuthContext 
