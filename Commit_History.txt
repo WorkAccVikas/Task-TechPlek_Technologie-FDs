@@ -11,3 +11,6 @@
 4. Add Following : 
     - Logout Functionality implemented with backend API ✅
     - Change in AuthContext 
+
+5. Add Following : 
+    - Register : Design and Integrate with backend ✅
