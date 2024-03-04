@@ -1,0 +1,8 @@
+1. npm install -D tailwindcss postcss autoprefixer
+2. npx tailwindcss init -p
+3. npm install -D prettier prettier-plugin-tailwindcss
+4. npm install axios
+5. npm install dayjs jwt-decode
+6. npm i react-router-dom
+7. npm i react-hot-toast
+8. npm i sass react-icons
