@@ -1,7 +1,13 @@
+import Banner from "../components/Banner";
+
 function Home() {
   console.log("Home Page render");
 
-  return <div>Home</div>;
+  return (
+    <>
+      <Banner title="Home" />
+    </>
+  );
 }
 
 export default Home;
