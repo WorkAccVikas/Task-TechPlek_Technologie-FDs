@@ -17,3 +17,16 @@
 
 6. Add Following : 
     - Design Banner Component
+
+7. Add Following : 
+    - Old App.jsx move to others/three.jsx (for reference)
+    - Add new LayoutPage for Protected Route working and get Context data from context provider
+    - Start changing in axiosInstance
+    - Add : ProtectedRoute Page
+    - get Data of "/user/currentUser" printed on console only 
+    - bug fixes in AuthContext.jsx
+    - Header Component working properly 
+        - It means when user already login it will show User icon 
+        - If user is not logged in then signin icon show 
+        - If admin login then Dashboard show in dialog box
+    - All working fine ✅ (Integrate API with frontend)

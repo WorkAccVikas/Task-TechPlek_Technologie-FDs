@@ -4,14 +4,14 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import AuthContext from "../context/AuthContext";
 import toast from "react-hot-toast";
 
-const user = { _id: "", role: "" };
+// const user = { _id: "", role: "" };
 // const user = { _id: "1", role: "User" };
 // const user = { _id: "1", role: "Admin" };
 
 function Header() {
   console.log("Header render");
   const [isOpen, setIsOpen] = useState(false);
-  const { logoutUser } = useContext(AuthContext);
+  const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const logoutHandler = async () => {
@@ -34,39 +34,33 @@ function Header() {
   };
 
   return (
-    <nav className="header flex justify-end gap-5 bg-pink-200 p-4">
+    <nav className="header flex justify-end gap-5 bg-indigo-600 p-4 text-white">
       <NavLink
         to={"/"}
         onClick={() => setIsOpen(false)}
-        className={({ isActive }) =>
-          "text-[#2e2e2e]" + (isActive ? " text-red-600" : "")
-        }
+        className={({ isActive }) => (isActive ? " text-red-600" : "")}
       >
         Home
       </NavLink>
       <NavLink
         to={"/about"}
         onClick={() => setIsOpen(false)}
-        className={({ isActive }) =>
-          "text-[#2e2e2e]" + (isActive ? " text-red-600" : "")
-        }
+        className={({ isActive }) => (isActive ? " text-red-600" : "")}
       >
         About
       </NavLink>
       <NavLink
         to={"/contact"}
         onClick={() => setIsOpen(false)}
-        className={({ isActive }) =>
-          "text-[#2e2e2e]" + (isActive ? " text-red-600" : "")
-        }
+        className={({ isActive }) => (isActive ? " text-red-600" : "")}
       >
         Contact
       </NavLink>
 
       {/* logout */}
-      <button onClick={logoutHandler} className={"text-[#2e2e2e]"}>
+      {/* <button onClick={logoutHandler} className={}>
         Logout
-      </button>
+      </button> */}
 
       {user?._id ? (
         <>

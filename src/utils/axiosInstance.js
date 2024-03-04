@@ -13,4 +13,10 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+axiosInstance.interceptors.request.use(async (req) => {
+  console.log("Intercepting request");
+
+  return req;
+});
+
 export default axiosInstance;

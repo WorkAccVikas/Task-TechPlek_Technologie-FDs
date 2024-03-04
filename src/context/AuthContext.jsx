@@ -21,7 +21,6 @@ export const AuthProvider = ({ children }) => {
   );
 
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (authTokens) {
@@ -76,7 +75,6 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(null);
       setUser(null);
       localStorage.removeItem("authTokens");
-      // navigate("/login");
     } catch (error) {
       console.log("Error at logoutUser context function = ", error);
       throw error;
