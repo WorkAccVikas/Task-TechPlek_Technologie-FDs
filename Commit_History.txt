@@ -6,4 +6,4 @@
     - Add Footer Design
     - Change in AuthContext 
     - Design Footer 
-    - Design and Integrate with backend ✅
+    - Login : Design and Integrate with backend ✅
