@@ -1,7 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useState, createContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
 
 const AuthContext = createContext();
@@ -14,6 +13,11 @@ export const AuthProvider = ({ children }) => {
       ? localStorage.getItem("authTokens")
       : null,
   );
+  const [accessTokens, setAccessTokens] = useState(() =>
+    localStorage.getItem("accessTokens")
+      ? localStorage.getItem("accessTokens")
+      : null,
+  );
   const [user, setUser] = useState(() =>
     localStorage.getItem("authTokens")
       ? jwtDecode(localStorage.getItem("authTokens"))
@@ -24,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (authTokens) {
-      // console.log("authToken changed...");
+      console.log("authToken changed...");
       // console.log(jwtDecode(authTokens));
       setUser(jwtDecode(authTokens));
     }
@@ -49,10 +53,12 @@ export const AuthProvider = ({ children }) => {
 
       if (response.data.statusCode === 200) {
         console.log("Success");
-        console.log(response.data.data.refreshToken);
+        // console.log(response.data.data.refreshToken);
         setAuthTokens(response.data.data.refreshToken);
+        setAccessTokens(response.data.data.accessToken);
         setUser(jwtDecode(response.data.data.refreshToken));
         localStorage.setItem("authTokens", response.data.data.refreshToken);
+        localStorage.setItem("accessTokens", response.data.data.accessToken);
       } else {
         console.log("Failed");
         alert("Something went wrong");
@@ -73,7 +79,9 @@ export const AuthProvider = ({ children }) => {
       console.log(`🚀 ~ logoutUser ~ response:`, response);
 
       setAuthTokens(null);
+      setAccessTokens(null);
       setUser(null);
+      localStorage.removeItem("accessTokens");
       localStorage.removeItem("authTokens");
     } catch (error) {
       console.log("Error at logoutUser context function = ", error);
@@ -86,6 +94,8 @@ export const AuthProvider = ({ children }) => {
     setUser,
     authTokens,
     setAuthTokens,
+    accessTokens,
+    setAccessTokens,
     loginUser,
     logoutUser,
   };

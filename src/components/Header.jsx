@@ -19,6 +19,7 @@ function Header() {
       console.log("Logout Handler");
       setIsOpen(false);
       await logoutUser();
+      toast.success("Logout Successfully");
       navigate("/login");
     } catch (error) {
       console.log("Error logoutHandler = ", error);
@@ -38,21 +39,33 @@ function Header() {
       <NavLink
         to={"/"}
         onClick={() => setIsOpen(false)}
-        className={({ isActive }) => (isActive ? " text-red-600" : "")}
+        className={({ isActive }) =>
+          isActive
+            ? "font-semibold text-black underline underline-offset-8"
+            : ""
+        }
       >
         Home
       </NavLink>
       <NavLink
         to={"/about"}
         onClick={() => setIsOpen(false)}
-        className={({ isActive }) => (isActive ? " text-red-600" : "")}
+        className={({ isActive }) =>
+          isActive
+            ? "font-semibold text-black underline underline-offset-8"
+            : ""
+        }
       >
         About
       </NavLink>
       <NavLink
         to={"/contact"}
         onClick={() => setIsOpen(false)}
-        className={({ isActive }) => (isActive ? " text-red-600" : "")}
+        className={({ isActive }) =>
+          isActive
+            ? "font-semibold text-black underline underline-offset-8"
+            : ""
+        }
       >
         Contact
       </NavLink>

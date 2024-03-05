@@ -30,3 +30,8 @@
         - If user is not logged in then signin icon show 
         - If admin login then Dashboard show in dialog box
     - All working fine ✅ (Integrate API with frontend)
+
+8. Add Following : 
+    - abortController in Profile Page to avoid unnecessary api call when we suddenly cancel to load profile component
+    - axios interceptors finish
+    - add toast success message for logout

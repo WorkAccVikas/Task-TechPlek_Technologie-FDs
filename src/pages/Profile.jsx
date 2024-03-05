@@ -13,7 +13,7 @@ function Profile() {
       const response = await axiosInstance.get("/api/v1/user/currentUser", {
         signal: abortController.signal,
       });
-      if (!isCalled) console.log(`🚀 ~ response:`, response);
+      if (!isCalled) console.log(`🚀 ~ response: Profile :: `, response);
     })();
 
     return () => {
