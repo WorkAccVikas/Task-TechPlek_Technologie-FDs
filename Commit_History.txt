@@ -41,3 +41,6 @@
         - Display all Users 
         - Delete User only when login as "Admin"
     - Design ConfirmBox component
+
+10. Add Following : 
+    - Display Current user details in profile page.

@@ -1,9 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import axiosInstance from "../utils/axiosInstance";
+import UserDetails from "../components/UserDetails";
+
+const user = {
+  username: "john_doe",
+  email: "john@example.com",
+  role: "Admin",
+  createdDate: "2024-03-05",
+};
 
 function Profile() {
   console.log("Profile Page render");
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     console.log("useEffect running.....");
@@ -14,6 +23,7 @@ function Profile() {
         signal: abortController.signal,
       });
       if (!isCalled) console.log(`🚀 ~ response: Profile :: `, response);
+      setData(response.data.data);
     })();
 
     return () => {
@@ -26,6 +36,7 @@ function Profile() {
   return (
     <div>
       <Banner title="Profile" />
+      {data && <UserDetails user={data} />}
     </div>
   );
 }
