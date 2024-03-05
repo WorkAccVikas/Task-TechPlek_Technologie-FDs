@@ -4,8 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { DevTool } from "@hookform/devtools";
 import { z } from "zod";
 
-import axios from "../utils/axiosInstance";
+// import axios from "../utils/axiosInstance";
+import axios from "axios";
 import toast from "react-hot-toast";
+import { BASE_URL } from "../utils/axiosInstance";
 
 const schema = z
   .object({
@@ -76,7 +78,10 @@ function Register() {
       const { confirm_password, ...payload } = data;
       console.table({ payload });
 
-      const response = await axios.post("/api/v1/user/register", payload);
+      const response = await axios.post(
+        `${BASE_URL}/api/v1/user/register`,
+        payload,
+      );
       console.log(`🚀 ~ onSubmit ~ response:`, response);
 
       if (response.data.success) {
@@ -86,7 +91,7 @@ function Register() {
       }
     } catch (error) {
       console.log("onSubmit catch = ", error);
-      toast.error("Server Error!")
+      toast.error("Server Error!");
     }
   };
 

@@ -35,3 +35,9 @@
     - abortController in Profile Page to avoid unnecessary api call when we suddenly cancel to load profile component
     - axios interceptors finish
     - add toast success message for logout
+
+9. Add Following : 
+    - Dashboard : API integration ✅
+        - Display all Users 
+        - Delete User only when login as "Admin"
+    - Design ConfirmBox component

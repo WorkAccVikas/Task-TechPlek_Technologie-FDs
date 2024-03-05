@@ -2,7 +2,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import { jwtDecode } from "jwt-decode";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // 1st way : add withCredentials to each axios request
 // axios.defaults.withCredentials = true;
